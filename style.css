@@ -80,7 +80,7 @@ button:hover {
   cursor: pointer;
 }
 
-.dice {
+img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -88,6 +88,6 @@ button:hover {
   width: 10vw;
 }
 
-img {
-  max-width: 100%;
+#img {
+  display: none;
 }
