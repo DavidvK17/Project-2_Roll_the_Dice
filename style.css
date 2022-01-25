@@ -31,13 +31,6 @@ section {
   justify-content: space-between;
 }
 
-@media only screen and (min-width: 800px) {
-  section *,
-  button {
-    font-size: 1.5em;
-  }
-}
-
 section > div {
   width: 50%;
   display: flex;
@@ -80,14 +73,18 @@ button:hover {
   cursor: pointer;
 }
 
-img {
+#img {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   width: 10vw;
+  display: none;
 }
 
-#img {
-  display: none;
+@media only screen and (min-width: 800px) {
+  section *,
+  button {
+    font-size: 1.5em;
+  }
 }
