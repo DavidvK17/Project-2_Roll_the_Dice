@@ -9,6 +9,7 @@
   --primary-color: linear-gradient(to top left, #0c2247, #bdcadb);
   --secondary-color: linear-gradient(to top left, #d2971a, #ccbc94);
   --tertiary-color: #fff;
+  --fourth-color: linear-gradient(to top right, #e8c4c4, #d32a17);
 }
 
 body {
@@ -25,7 +26,7 @@ section {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: var(--secondary-color);
+  background: var(--fourth-color);
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
@@ -87,4 +88,8 @@ button:hover {
   transform: translate(-50%, -50%);
   width: 10vw;
   display: none;
+}
+
+.is--active {
+  background: var(--secondary-color);
 }
