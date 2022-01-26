@@ -9,13 +9,12 @@ let score = 0;
 let displayScore = document.getElementById(`score--0`);
 
 const holdScore = document.getElementById('hold');
-let curScore = 0;
+let scores = [0, 0];
 let displayCurScore = document.getElementById(`current--score--0`);
 
-const curPlayer0 = document.getElementsByClassName('player--container--0')[0];
-const curPlayer1 = document.getElementsByClassName('player--container--1')[0];
+let curPlayer = document.getElementsByClassName('player--container--0')[0];
 
-const playing = curPlayer0.classList.contains('is--active');
+const playing = curPlayer.classList.contains('is--active');
 
 // generate randome dice roll
 function diceRoll() {
@@ -35,12 +34,12 @@ function diceRoll() {
 }
 
 function updateCurScore() {
+  let curScore = scores[activePlayer];
   curScore += score;
   displayCurScore.textContent = `${curScore}`;
   score = 0;
   displayScore.textContent = 0;
   img.style.display = 'none';
-
   switchPlayer();
 }
 
@@ -48,15 +47,13 @@ function switchPlayer() {
   activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
   displayScore = document.getElementById(`score--${activePlayer}`);
   displayCurScore = document.getElementById(`current--score--${activePlayer}`);
-  console.log(displayScore);
-  console.log(displayCurScore);
 
-  if (playing) {
-    curPlayer0.classList.remove('is--active');
-    curPlayer1.classList.add('is--active');
-  } else {
-    curPlayer0.classList.add('is--active');
-    curPlayer1.classList.remove('is--active');
+  if (curPlayer.classList.contains('is--active')) {
+    curPlayer.classList.remove('is--active');
+    curPlayer = document.getElementsByClassName(
+      `player--container--${activePlayer}`
+    )[0];
+    curPlayer.classList.add('is--active');
   }
 
   score = 0;
