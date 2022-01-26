@@ -1,18 +1,16 @@
 'use strict';
 
+// setting active player to 0 for me to be able to toggle between player and score clasees
+let activePlayer = 0;
+
 const rollDice = document.getElementById('roll--dice');
 let img = document.getElementById('img');
-let score0 = 0;
-let displayScore0 = document.getElementById('score--0');
-let score1 = 0;
-let displayScore1 = document.getElementById('score--1');
+let score = 0;
+let displayScore = document.getElementById(`score--0`);
 
 const holdScore = document.getElementById('hold');
-let curScore0 = 0;
-let displayCurScore0 = document.getElementById('current--score--0');
-
-let curScore1 = 0;
-let displayCurScore = document.getElementById('current--score--1');
+let curScore = 0;
+let displayCurScore = document.getElementById(`current--score--0`);
 
 const curPlayer0 = document.getElementsByClassName('player--container--0')[0];
 const curPlayer1 = document.getElementsByClassName('player--container--1')[0];
@@ -29,24 +27,30 @@ function diceRoll() {
 
   if (playing && dice !== 1) {
     // update player0 score
-    score0 += dice;
-    displayScore0.textContent = `${score0}`;
+    score += dice;
+    displayScore.textContent = `${score}`;
   } else {
     switchPlayer();
   }
 }
 
 function updateCurScore() {
-  curScore0 += score0;
-  displayCurScore0.textContent = `${curScore0}`;
-  score0 = 0;
-  displayScore0.textContent = 0;
+  curScore += score;
+  displayCurScore.textContent = `${curScore}`;
+  score = 0;
+  displayScore.textContent = 0;
   img.style.display = 'none';
 
   switchPlayer();
 }
 
 function switchPlayer() {
+  activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+  displayScore = document.getElementById(`score--${activePlayer}`);
+  displayCurScore = document.getElementById(`current--score--${activePlayer}`);
+  console.log(displayScore);
+  console.log(displayCurScore);
+
   if (playing) {
     curPlayer0.classList.remove('is--active');
     curPlayer1.classList.add('is--active');
@@ -55,8 +59,8 @@ function switchPlayer() {
     curPlayer1.classList.remove('is--active');
   }
 
-  score0 = 0;
-  displayScore0.textContent = `${score0}`;
+  score = 0;
+  displayScore.textContent = `${score}`;
 }
 
 // generate randome dice roll on rollDice click
