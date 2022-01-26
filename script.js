@@ -37,10 +37,11 @@ function diceRoll() {
 function updateCurScore() {
   // TO DO
   // save current score for next round
+  console.log(scores);
+  console.log(scores[activePlayer]);
+  console.log(curScore);
 
-  curScore = scores[activePlayer];
-  curScore = score;
-
+  curScore += score;
   console.log(scores);
   console.log(scores[activePlayer]);
   console.log(curScore);
