@@ -10,6 +10,7 @@
   --secondary-color: linear-gradient(to top left, #d2971a, #ccbc94);
   --tertiary-color: #fff;
   --fourth-color: linear-gradient(to top right, #e8c4c4, #d32a17);
+  --fifth-color: linear-gradient(to top right, #c4e8db, #17d391);
 }
 
 body {
@@ -92,4 +93,8 @@ button:hover {
 
 .is--active {
   background: var(--secondary-color);
+}
+
+.winner {
+  background: var(--fifth-color);
 }

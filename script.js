@@ -18,6 +18,8 @@ const playing = curPlayer.classList.contains('is--active');
 let scores = [0, 0];
 let curScore = 0;
 
+const newGame = document.getElementById('new--game');
+
 // generate randome dice roll
 function diceRoll() {
   const dice = Math.trunc(Math.random() * 6 + 1);
@@ -37,12 +39,19 @@ function diceRoll() {
 function updateCurScore() {
   // save current score for next round
   scores[activePlayer] += score;
-
   displayCurScore.textContent = `${scores[activePlayer]}`;
-  score = 0;
-  displayScore.textContent = 0;
-  img.style.display = 'none';
-  switchPlayer();
+  console.log(curPlayer);
+
+  if (playing && scores[activePlayer] >= 10) {
+    curPlayer.classList.add('winner');
+    rollDice.disabled = true;
+    holdScore.disabled = true;
+  } else {
+    score = 0;
+    displayScore.textContent = 0;
+    img.style.display = 'none';
+    switchPlayer();
+  }
 }
 
 function switchPlayer() {
@@ -66,3 +75,38 @@ rollDice.addEventListener('click', diceRoll);
 
 // update player0 current score on hold
 holdScore.addEventListener('click', updateCurScore);
+
+// reset css and declare player 1 active player on new game
+newGame.addEventListener('click', function() {
+  scores = [0, 0];
+  score = 0;
+  displayScore.textContent = score;
+  curScore = 0;
+  displayCurScore.textContent = curScore;
+  console.log(score);
+  console.log(curScore);
+  console.log(scores);
+
+  rollDice.disabled = false;
+  holdScore.disabled = false;
+
+  document
+    .getElementsByClassName('player--container--0')[0]
+    .classList.remove('winner');
+  document
+    .getElementsByClassName('player--container--1')[0]
+    .classList.remove('winner');
+
+  if (
+    document
+      .getElementsByClassName('player--container--1')[0]
+      .classList.contains('is--active')
+  ) {
+    document
+      .getElementsByClassName(`player--container--0`)[0]
+      .classList.add('is--active');
+    document
+      .getElementsByClassName('player--container--1')[0]
+      .classList.remove('is--active');
+  }
+});
