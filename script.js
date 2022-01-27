@@ -40,7 +40,6 @@ function updateCurScore() {
   // save current score for next round
   scores[activePlayer] += score;
   displayCurScore.textContent = `${scores[activePlayer]}`;
-  console.log(curPlayer);
 
   if (playing && scores[activePlayer] >= 20) {
     curPlayer.classList.add('winner');
