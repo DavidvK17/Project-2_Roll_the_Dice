@@ -35,7 +35,6 @@ function diceRoll() {
 }
 
 function updateCurScore() {
-  // TO DO
   // save current score for next round
   scores[activePlayer] += score;
 
