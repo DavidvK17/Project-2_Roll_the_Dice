@@ -14,6 +14,7 @@ let displayCurScore = document.getElementById(`current--score--0`);
 let curPlayer = document.getElementsByClassName('player--container--0')[0];
 
 const playing = curPlayer.classList.contains('is--active');
+console.log(playing);
 
 let scores = [0, 0];
 let curScore = 0;
@@ -37,16 +38,9 @@ function diceRoll() {
 function updateCurScore() {
   // TO DO
   // save current score for next round
-  console.log(scores);
-  console.log(scores[activePlayer]);
-  console.log(curScore);
+  scores[activePlayer] += score;
 
-  curScore += score;
-  console.log(scores);
-  console.log(scores[activePlayer]);
-  console.log(curScore);
-
-  displayCurScore.textContent = `${curScore}`;
+  displayCurScore.textContent = `${scores[activePlayer]}`;
   score = 0;
   displayScore.textContent = 0;
   img.style.display = 'none';
