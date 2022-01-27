@@ -14,7 +14,6 @@ let displayCurScore = document.getElementById(`current--score--0`);
 let curPlayer = document.getElementsByClassName('player--container--0')[0];
 
 const playing = curPlayer.classList.contains('is--active');
-console.log(playing);
 
 let scores = [0, 0];
 let curScore = 0;
