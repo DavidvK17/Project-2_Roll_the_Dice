@@ -82,15 +82,17 @@ newGame.addEventListener('click', function() {
   scores = [0, 0];
   score = 0;
   displayScore.textContent = score;
+  displayCurScore = document.getElementById(`current--score--0`);
+  curScore = 0;
+  displayCurScore.textContent = curScore;
+  displayCurScore = document.getElementById(`current--score--1`);
   curScore = 0;
   displayCurScore.textContent = curScore;
   img.style.display = 'none';
 
   curPlayer = document.getElementsByClassName('player--container--0')[0];
   displayScore = document.getElementById(`score--${activePlayer}`);
-  displayCurScore = document.getElementById(`current--score--${activePlayer}`);
-
-  console.log(curPlayer);
+  displayCurScore = document.getElementById(`current--score--0`);
 
   rollDice.disabled = false;
   holdScore.disabled = false;
