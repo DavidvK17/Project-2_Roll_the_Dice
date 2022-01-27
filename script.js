@@ -42,7 +42,7 @@ function updateCurScore() {
   displayCurScore.textContent = `${scores[activePlayer]}`;
   console.log(curPlayer);
 
-  if (playing && scores[activePlayer] >= 10) {
+  if (playing && scores[activePlayer] >= 20) {
     curPlayer.classList.add('winner');
     rollDice.disabled = true;
     holdScore.disabled = true;
