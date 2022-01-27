@@ -78,14 +78,19 @@ holdScore.addEventListener('click', updateCurScore);
 
 // reset css and declare player 1 active player on new game
 newGame.addEventListener('click', function() {
+  activePlayer = 0;
   scores = [0, 0];
   score = 0;
   displayScore.textContent = score;
   curScore = 0;
   displayCurScore.textContent = curScore;
-  console.log(score);
-  console.log(curScore);
-  console.log(scores);
+  img.style.display = 'none';
+
+  curPlayer = document.getElementsByClassName('player--container--0')[0];
+  displayScore = document.getElementById(`score--${activePlayer}`);
+  displayCurScore = document.getElementById(`current--score--${activePlayer}`);
+
+  console.log(curPlayer);
 
   rollDice.disabled = false;
   holdScore.disabled = false;
@@ -97,16 +102,10 @@ newGame.addEventListener('click', function() {
     .getElementsByClassName('player--container--1')[0]
     .classList.remove('winner');
 
-  if (
-    document
-      .getElementsByClassName('player--container--1')[0]
-      .classList.contains('is--active')
-  ) {
-    document
-      .getElementsByClassName(`player--container--0`)[0]
-      .classList.add('is--active');
-    document
-      .getElementsByClassName('player--container--1')[0]
-      .classList.remove('is--active');
-  }
+  document
+    .getElementsByClassName(`player--container--0`)[0]
+    .classList.add('is--active');
+  document
+    .getElementsByClassName('player--container--1')[0]
+    .classList.remove('is--active');
 });
